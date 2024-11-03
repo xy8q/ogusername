@@ -1,0 +1,151 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #333;
+}
+
+.container {
+    text-align: center;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    max-width: 450px;
+    width: 90%;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+}
+
+h1 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 8px 0;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    outline: none;
+}
+
+input[type="text"]:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.25);
+}
+
+button {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin: 10px 0;
+}
+
+button:hover {
+    background: #5a6fd6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.result {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f7fafc;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: #2d3748;
+    word-break: break-word;
+    min-height: 30px;
+    border: 2px solid #e2e8f0;
+}
+
+.copy-btn {
+    background: #48bb78;
+}
+
+.copy-btn:hover {
+    background: #38a169;
+}
+
+.copy-btn:disabled {
+    background: #cbd5e0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+        width: 85%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    input[type="text"], button {
+        padding: 10px 15px;
+    }
+}
+
+/* Add some animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Add focus styles for accessibility */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.5);
+}
+
+/* Add loading state styles */
+button.loading {
+    opacity: 0.8;
+    cursor: wait;
+}
+
+/* Improve text selection */
+::selection {
+    background: #667eea;
+    color: white;
+}

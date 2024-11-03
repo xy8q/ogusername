@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Any OG Fortnite Username</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+
+        <!-- Primary Meta Tags -->
+        <meta name="title" content="Any OG Fortnite Username">
+        <meta name="description" content="Do you want to get rare username like Setty? This site is perfect.">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Any OG Fortnite Username">
+        <meta property="og:description" content="Do you want to get rare username like Setty? This site is perfect.">
+        <meta property="og:image" content="https://cdn2.unrealengine.com/Fortnite%2Fblog%2Ffortnite-chapter-2-season-2-extended-until-early-june-2020%2F12BR_SolidGold_NewsHeader-1920x1080-f0c7b64ccb7a820bb32f9b67b1e6f757d31ce5f3.jpg">
+        <meta content="#16c2f2" data-react-helmet="true" name="theme-color" />
+    
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:title" content="Any OG Fortnite Username">
+        <meta property="twitter:description" content="Do you want to get rare username like Setty? This site is perfect.">
+        <meta property="twitter:image" content="https://cdn2.unrealengine.com/Fortnite%2Fblog%2Ffortnite-chapter-2-season-2-extended-until-early-june-2020%2F12BR_SolidGold_NewsHeader-1920x1080-f0c7b64ccb7a820bb32f9b67b1e6f757d31ce5f3.jpg">
+    
+        
+</head>
+<body>
+
+<div class="container">
+    <h1>Any Fortnite Username</h1>
+    <input type="text" id="usernameInput" placeholder="Enter your decired username" />
+    <button onclick="replaceCharacters()">Transform Username</button>
+    <div class="result" id="result"></div>
+    <button class="copy-btn" id="copyButton" onclick="copyToClipboard()" disabled>Copy to Clipboard</button>
+</div>
+
+<script>
+    function replaceCharacters() {
+        const replacements = {
+            "A": "А", "a": "а",
+            "B": "В",
+            "C": "С", "c": "с",
+            "E": "Е", "e": "е",
+            "H": "Н",
+            "I": "І", "i": "і",
+            "J": "Ј", "j": "ј",
+            "K": "К",
+            "M": "М",
+            "O": "О", "o": "о",
+            "P": "Р", "p": "р",
+            "s": "ѕ",
+            "T": "Т",
+            "Y": "Ү", "y": "у",
+            "X": "Х", "x": "х"
+        };
+
+        let username = document.getElementById("usernameInput").value;
+        let transformedUsername = "";
+        let transformCount = 0;
+        let transformableChars = [];
+
+        // First pass: count transformable characters
+        for (let i = 0; i < username.length; i++) {
+            if (replacements[username[i]]) {
+                transformableChars.push(i);
+            }
+        }
+
+        // Determine minimum transformations (at least 25% of transformable characters, minimum 1)
+        let minTransforms = Math.max(1, Math.ceil(transformableChars.length * 0.25));
+
+        // Second pass: apply transformations
+        for (let i = 0; i < username.length; i++) {
+            let char = username[i];
+            if (replacements[char] && (Math.random() < 0.7 || transformCount < minTransforms)) {
+                transformedUsername += replacements[char];
+                transformCount++;
+            } else {
+                transformedUsername += char;
+            }
+        }
+
+        // If we haven't met the minimum, force some transformations
+        while (transformCount < minTransforms && transformableChars.length > 0) {
+            let index = transformableChars.pop();
+            let char = username[index];
+            transformedUsername = transformedUsername.substr(0, index) + 
+                                  replacements[char] + 
+                                  transformedUsername.substr(index + 1);
+            transformCount++;
+        }
+
+        document.getElementById("result").textContent = transformedUsername;
+        document.getElementById("copyButton").disabled = !transformedUsername;
+    }
+
+    function copyToClipboard() {
+        const transformedText = document.getElementById("result").textContent;
+
+        navigator.clipboard.writeText(transformedText).then(() => {
+            alert("Copied to clipboard!");
+        }).catch(err => {
+            alert("Failed to copy text: " + err);
+        });
+    }
+</script>
+</body>
+</html>
